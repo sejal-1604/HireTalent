@@ -84,7 +84,7 @@ The **College Placement Management System** is a web application designed to str
 ### Clone the Repository
 ```bash
 git clone https://github.com/sejal-1604/HireTalent
-cd college-placement-management-system
+cd Hire-Talent-Project-main
 ```
 
 ### Backend Setup
