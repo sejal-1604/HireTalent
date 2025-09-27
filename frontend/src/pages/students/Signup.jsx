@@ -71,8 +71,15 @@ function Signup() {
     if (formData?.number?.length !== 10) return setError({ ...error, number: 'Number Length Should be 10 digital only!' })
 
     try {
+      console.log("🚀 Sending signup request to:", `${BASE_URL}/student/signup`);
+      console.log("📝 Form data:", formData);
+      
       const response = await axios.post(`${BASE_URL}/student/signup`, formData);
-      // console.log(response.data);
+      
+      console.log("✅ Signup response:", response);
+      console.log("📄 Response data:", response.data);
+      console.log("📊 Response status:", response.status);
+      
       setToastMessage("User Created Successfully! Now You Can Login.");
       setShowToast(true);
 
@@ -80,16 +87,29 @@ function Signup() {
         showToastPass: true,
         toastMessagePass: "User Created Successfully! Now You Can Login."
       }
+      
+      console.log("🔄 Navigating to login page...");
       navigate('../student/login', { state: dataToPass });
 
       // after 3sec to go login page
       // setTimeout(() => navigate("../student/login"), 2000);
     } catch (error) {
-      if (error.response.data.msg) {
+      console.log("❌ Signup error:", error);
+      console.log("❌ Error response:", error.response);
+      console.log("❌ Error data:", error.response?.data);
+      console.log("❌ Error status:", error.response?.status);
+      console.log("❌ Error message:", error.message);
+      
+      if (error.response?.data?.msg) {
         setToastMessage(error.response.data.msg);
         setShowToast(true);
+      } else if (error.message) {
+        setToastMessage(`Network Error: ${error.message}`);
+        setShowToast(true);
+      } else {
+        setToastMessage("Something went wrong. Please try again.");
+        setShowToast(true);
       }
-      console.log("Student Signup.jsx => ", error);
     }
   }
 

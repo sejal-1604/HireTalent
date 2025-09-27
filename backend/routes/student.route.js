@@ -24,6 +24,11 @@ const { GetInternships, UpdateInternship, DeleteInternship } = require('../contr
 
 const { StudentDataYearBranchWise, NotifyStudentStatus } = require('../controllers/Student/student-data-for-admin.controller.js');
 
+// Test route to check if routing works
+router.get('/test', (req, res) => {
+  res.json({ msg: "Student routes working!" });
+});
+
 // signup post request for student
 router.post('/signup', Signup);
 
