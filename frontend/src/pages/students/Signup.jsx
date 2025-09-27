@@ -98,9 +98,13 @@ function Signup() {
       console.log("❌ Error response:", error.response);
       console.log("❌ Error data:", error.response?.data);
       console.log("❌ Error status:", error.response?.status);
+      console.log("❌ Error message:", error.message);
       
       if (error.response?.data?.msg) {
         setToastMessage(error.response.data.msg);
+        setShowToast(true);
+      } else if (error.message) {
+        setToastMessage(`Network Error: ${error.message}`);
         setShowToast(true);
       } else {
         setToastMessage("Something went wrong. Please try again.");

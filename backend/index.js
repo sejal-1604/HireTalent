@@ -6,7 +6,18 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
+// Configure CORS to allow requests from frontend
+app.use(cors({
+  origin: [
+    'https://hire-talent-iv4x.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // public folder for users profile
 app.use('/profileImgs', express.static(path.join(__dirname, 'public/profileImgs')));
