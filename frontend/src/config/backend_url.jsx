@@ -1,2 +1,2 @@
-export const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = 'https://vercel.com/sejals-projects-c804ef4c/hire-talent';
 // export const BASE_URL = 'https://cpms-api.vercel.app';
